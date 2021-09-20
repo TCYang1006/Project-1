@@ -1,0 +1,55 @@
+/*
+.map {
+    height: 350px;
+    width: 100%;
+  } */
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primarycolor: #00416D;
+    --secondarycolor: #D9ADAD;
+    --tertiarycolor: #DDDDDD;
+
+}
+
+ body {
+  background-color: var(--tertiarycolor)
+  }
+/* navigation styles */
+.nav-wrapper {
+    background-color: var(--primarycolor);
+}
+
+.brand-logo {
+  margin-left: 5%;
+}
+
+.navigation {
+  margin-right: 5%;
+}
+
+/* button styles */
+.btn {
+    background-color: var(--secondarycolor);
+}
+
+.btn:hover {
+    background-color: var(--secondarycolor);
+}
+
+/* card styles */
+.card-title {
+  color: var(--primarycolor);
+  text-decoration: underline;
+}
+
+/* previous search section styles */
+.previous-searches {
+    height: 200px;
+    color: var(--primarycolor);
+}
