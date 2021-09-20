@@ -53,3 +53,10 @@
     height: 200px;
     color: var(--primarycolor);
 }
+
+.scroll-box {
+  overflow-y: scroll;
+  height: 400px;
+  padding: 1rem
+}
+

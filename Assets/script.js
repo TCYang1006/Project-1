@@ -2,7 +2,10 @@ var myApiKey = 	"kHDMctExxPE8FJUNZrAuZBPqgpONcvnq"
 var searchButton = document.getElementById('searchBtn')
 var searchedCities = [];
 var cityList =$("#city-list");
-
+var startDate = moment().format();
+var daysAdd = 6;
+var endDate = moment().add(6, 'd').format();
+  console.log(endDate)
 /* function eventSearch() {
     var search = document.getElementById('search').value;
     fetch (
@@ -33,7 +36,7 @@ function getEvents(search) {
     
     $.ajax({
       type:"GET",
-      url:'https://app.ticketmaster.com/discovery/v2/events?' + 'apikey=' + myApiKey + '&radius=50&locale=*&city=' + search + '&includeSpellcheck=yes',
+      url:'https://app.ticketmaster.com/discovery/v2/events?' + 'apikey=' + myApiKey + '&radius=50&locale=*&city=' + search + '&startDateTime='+ startDate + '&endDateTime=' + endDate + '&includeSpellcheck=yes',
       async:true,
       dataType: "json",
       success: function(json) {
