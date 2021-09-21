@@ -5,7 +5,6 @@ var cityList =$("#city-list");
 var startDate = moment().format();
 var daysAdd = 6;
 var endDate = moment().add(6, 'd').format();
-  console.log(endDate)
 /* function eventSearch() {
     var search = document.getElementById('search').value;
     fetch (
