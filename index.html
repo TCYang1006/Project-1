@@ -23,18 +23,26 @@
                     <a href="#" data-target="mobile" class="sidenav-trigger right"><i
                             class="material-icons">menu</i></a>
                     <ul id="nav-mobile" class="right hide-on-med-and-down navigation">
-                        <li><a>Nav 1</a></li>
-                        <li><a>Nav 2</a></li>
-                        <li><a>Nav 3</a></li>
+                        <li><a href="#search">Search</a></li>
+                        <li><a href="#results">Results</a></li>
+                        <li><a href="#location">Location</a></li>
+                        <li><a href="#weather">Weather</a></li>
                     </ul>
                 </div>
             </nav>
 
             <ul class="sidenav" id="mobile">
-                <li><a>Nav 1</a></li>
-                <li><a>Nav 2</a></li>
-                <li><a>Nav 3</a></li>
+                <div>
+                <li><a class="waves-effect" href="#search">Search</a></li>
+                <li><div class="divider"></div></li>
+                <li><a class="waves-effect" href="#results">Results</a></li>
+                <li><div class="divider"></div></li>
+                <li><a class="waves-effect" href="#location">Location</a></li>
+                <li><div class="divider"></div></li>
+                <li><a class="waves-effect" href="#weather">Weather</a></li>
+                </div>
             </ul>
+            
         </div>
     </header>
     <!--End Header and Navigation Bar -->
@@ -44,15 +52,17 @@
     <div class="container">
         <div class="row">
             <div class="card hoverable col s12 valign-wrapper">
-                <div class="input-field col s8">
+                <div class="input-field col s12 m8 l8">
                     <input placeholder="Enter a City" id="search" type="text" />
                 </div>
-                <a class="waves-effect waves-light btn-small col s2 btn z-depth-2">Search
-                    <i class="material-icons right">search</i>
-                </a>
-                <a class="waves-effect waves-light btn-small col s2 btn z-depth-2">Clear Saved
-                    <i class="material-icons right">delete</i>
-                </a>
+                <div class="col s12 m4 l4">
+                    <a class="waves-effect waves-light btn-small col s12 m6 l6 btn z-depth-2">Search
+                        <i class="material-icons right">search</i>
+                    </a>
+                    <a class="waves-effect waves-light btn-small col s6 btn z-depth-2 hide-on-small-only">Clear Saved
+                        <i class="material-icons right">delete</i>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -61,88 +71,33 @@
     <!-- Left Side/Results Section of Main Content Begin-->
     <div class="container">
         <div class="row">
-            <div class="col s7">
-                <div class="card large col s4 hoverable">
-                    <div class="card-title center-align">Ticketmaster</div>
-                    <!--Preloader Content Start-->
-                    <div class="center-align">
-                        <div class="preloader-wrapper small active">
-                            <div class="spinner-layer spinner-black-only">
-                                <div class="circle-clipper left">
-                                    <div class="circle"></div>
-                                </div>
-                                <div class="gap-patch">
-                                    <div class="circle"></div>
-                                </div>
-                                <div class="circle-clipper right">
-                                    <div class="circle"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Preloader Content End-->
+            <div class="col s12 m12 l7" id="results">
+                <div class="card large col s12 m8 l8 hoverable">
+                    <div class="card-title section center-align">Ticketmaster</div>
+                    <div class = "divider"></div>
                     <div class="card-action center-align">
                         <a class="waves-effect waves-light btn-small btn z-depth-2">Tickets
                             <i class="material-icons right">turned_in_not</i>
                         </a>
                     </div>
                 </div>
-                <div class="card large col s4 hoverable">
-                    <div class="card-title center-align">Seat Geek</div>
-                    <!--Preloader Content Start-->
-                    <div class="center-align">
-                        <div class="preloader-wrapper small active">
-                            <div class="spinner-layer spinner-black-only">
-                                <div class="circle-clipper left">
-                                    <div class="circle"></div>
-                                </div>
-                                <div class="gap-patch">
-                                    <div class="circle"></div>
-                                </div>
-                                <div class="circle-clipper right">
-                                    <div class="circle"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Preloader Content End-->
-                    <div class="card-action center-align">
-                        <a class="waves-effect waves-light btn-small btn z-depth-2">Tickets
-                            <i class="material-icons right">turned_in_not</i>
-                        </a>
-                    </div>
-                </div>
-                <div class="card large col s4 hoverable">
-                    <div class="card-title center-align">StubHub</div>
-                    <!--Preloader Content Start-->
-                    <div class="center-align">
-                        <div class="preloader-wrapper small active">
-                            <div class="spinner-layer spinner-black-only">
-                                <div class="circle-clipper left">
-                                    <div class="circle"></div>
-                                </div>
-                                <div class="gap-patch">
-                                    <div class="circle"></div>
-                                </div>
-                                <div class="circle-clipper right">
-                                    <div class="circle"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Preloader Content End-->
-                    <div class="card-action center-align">
-                        <a class="waves-effect waves-light btn-small btn z-depth-2">Tickets
-                            <i class="material-icons right">turned_in_not</i>
-                        </a>
-                    </div>
+                <div class="card large col s12 m4 l4 hoverable">
+                    <div class="card-title section center-align">Cities<i class="material-icons">location_city</i></div>
+                    <div class="divider"></div>
                 </div>
                 <!--Previous Searches Card-->
-                <div class="card hoverable col s12 previous-searches">
-                    <i class="medium material-icons">location_city</i>
-                </div>
             </div>
-            <!--Left Side/Results Section of Main Content End-->
+            <div class="col s12 m12 l5">
+                <div class="col s12 card large hoverable" id="location">
+                    <div id="map" class="map">
+                        <div class="card-title section right-align">Location
+                            <i class="material-icons">location_city</i>
+                        </div>
+                        <div class="divider"></div>
+                    </div>
+                </div>
+                <!--Left Side/Results Section of Main Content End-->
+            </div>
 
 
 
@@ -150,28 +105,23 @@
             <!--Right Side/Map and Weather of Main Content Begin-->
 
             <!-- Location of Venue Map Content -->
-            <div class="col s5">
-                <div class="col s12 card medium hoverable">
-                    <div id="map" class="map">
-                        <div class="card-title right-align">Location
-                            <i class="material-icons">location_city</i>
-                        </div>
-                    </div>
-                </div>
-                <!--Weather Content-->
-                <div class="col s12 card small hoverable">
-                    <div class="card-title">
-                        <i class="material-icons">wb_sunny</i>
-                        Weather</div>
-                </div>
-            </div>
-            <!--Right Side/Map and Weather of Main Content End-->
 
+            <div class="row">
+                <!--Weather Content-->
+                <div class="col s12 center-align card small hoverable" id="weather">
+                    <div class="card-title section">
+                        <i class="material-icons">wb_sunny</i>
+                        Weather
+                    </div>
+                    <div class="divider"></div>
+                </div>
+                <!--Right Side/Map and Weather of Main Content End-->
+            </div>
         </div>
     </div>
 
 
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- script for map <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.7.0/build/ol.js"></script> -->
     <script src="./Assets/script.js"></script>
