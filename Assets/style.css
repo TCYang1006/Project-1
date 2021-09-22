@@ -42,10 +42,10 @@
     background-color: var(--secondarycolor);
 }
 
-/* card styles */
-.card-title {
-  color: var(--primarycolor);
-  text-decoration: underline;
+  /* card styles */
+  .card-title {
+    color: var(--primarycolor);
+    text-decoration: underline;
 }
 
 /* previous search section styles */
