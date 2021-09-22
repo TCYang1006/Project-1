@@ -5,6 +5,9 @@ var cityList =$("#city-list");
 var startDate = moment().format();
 var daysAdd = 6;
 var endDate = moment().add(6, 'd').format();
+var weatherContainerEl = document.querySelector("#weather");
+var cityInputEl = document.querySelector("#search");
+var cityName = cityInputEl.value.trim();
 /* function eventSearch() {
     var search = document.getElementById('search').value;
     fetch (
@@ -47,6 +50,7 @@ function getEvents(search) {
                }
     });
   }
+
 
   function showEvents(json) {
     var items = $('#events .list-group-item');
@@ -108,8 +112,57 @@ function renderCities() {
     } 
     else{
         eventSearch(city)
+        sevenDayForecast(cityName)
     };
-}   
+}
+
+//var formSubmit = function(event) {
+  //event.preventDefault();
+  //var cityName = document.getElementById('search').value;
+
+var sevenDayForecast = function(cityName) {
+  var apiUrl = `https://api.openweathermap.org/data/2.5/forecast/daily?q=${cityName}&cnt=7&appid=4aa8b0f77c886819d2b920f429db711e`;
+  
+  fetch(apiUrl)
+  .then(function(response) {
+      if(response.ok) {
+          response.json().then(function(data) {
+              console.log(data, city)
+              displayForecast(data, cityName);
+          });
+      }
+  });
+  }
+  
+  var displayForecast = function (weather, cityName) {
+      weatherContainerEl.textContent = ""
+  
+      var forecast = weather.list
+      for (i=5; i < forecast.length; i=i+8) {
+          var dailyForecast = forecast[i];
+      }
+  
+      var sevenDayEl = document.createElement("div");
+      sevenDayEl.classList = "card forecast-box";
+  
+      var futureDate = document.createElement ("div");
+      futureDate.textContent = moment.unix(dailyForecast.dt).format(M/D);
+      sevenDayEl.appendChild(futureDate);
+  
+      var futureTempEl = document.createElement ("div");
+      futureTempEl.textContent = Math.floor(daily.main.temp) + "°";
+      sevenDayEl.appendChild(futureTempEl);
+  
+      weatherContainerEl.appendChild(sevenDayEl);
+  
+  
+  
+  
+  
+  }
+
 function clearSaved() {
     localStorage.clear();
 }
+
+//searchButton.addEventListener("click", sevenDayForecast);
