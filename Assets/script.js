@@ -7,7 +7,6 @@ var daysAdd = 6;
 var endDate = moment().add(6, 'd').format();
 var weatherContainerEl = document.querySelector("#weather");
 var cityInputEl = document.querySelector("#search");
-var cityName = cityInputEl.value.trim();
 /* function eventSearch() {
     var search = document.getElementById('search').value;
     fetch (
@@ -121,48 +120,91 @@ function renderCities() {
   //var cityName = document.getElementById('search').value;
 
 var sevenDayForecast = function(cityName) {
-  var apiUrl = `https://api.openweathermap.org/data/2.5/forecast/daily?q=${cityName}&cnt=7&appid=4aa8b0f77c886819d2b920f429db711e`;
+  var cityName = cityInputEl.value.trim();
+  var apiKey = "4aa8b0f77c886819d2b920f429db711e"
+  var apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=imperial&appid=4aa8b0f77c886819d2b920f429db711e`;
   
   fetch(apiUrl)
   .then(function(response) {
       if(response.ok) {
           response.json().then(function(data) {
-              console.log(data, city)
-              displayForecast(data, cityName);
+              console.log(data, cityName)
+             // displayForecast(data, cityName);
+             testForecast (data, cityName)
           });
       }
   });
   }
-  
-  var displayForecast = function (weather, cityName) {
-      weatherContainerEl.textContent = ""
-  
-      var forecast = weather.list
-      for (i=5; i < forecast.length; i=i+8) {
-          var dailyForecast = forecast[i];
-      }
-  
-      var sevenDayEl = document.createElement("div");
-      sevenDayEl.classList = "card forecast-box";
-  
-      var futureDate = document.createElement ("div");
-      futureDate.textContent = moment.unix(dailyForecast.dt).format(M/D);
-      sevenDayEl.appendChild(futureDate);
-  
-      var futureTempEl = document.createElement ("div");
-      futureTempEl.textContent = Math.floor(daily.main.temp) + "°";
-      sevenDayEl.appendChild(futureTempEl);
-  
-      weatherContainerEl.appendChild(sevenDayEl);
-  
-  
-  
-  
-  
+
+  var testForecast = function(weather) {
+    weatherContainerEl.textContent = ""
+
+    var forecast = weather.list;
+    for(var i=5; i < forecast.length; i=i+8) {
+        var daily = forecast[i];
+
+    var fiveDayEl = document.createElement("div");
+    fiveDayEl.classList = "card five-day col-2";
+
+    var futureDate = document.createElement("div");
+    futureDate.textContent = moment.unix(daily.dt).format("M/D");
+    futureDate.classList = "card-header text-center dashboard";
+    fiveDayEl.appendChild(futureDate);
+    
+
+    var futureTempEl = document.createElement("span");
+    futureTempEl.textContent = Math.floor(daily.main.temp) + "°";
+    fiveDayEl.appendChild(futureTempEl);
+
+    var futureHumidityEl = document.createElement("span");
+    futureHumidityEl.textContent = daily.main.humidity + "%";
+    fiveDayEl.appendChild(futureHumidityEl);
+
+    var futureWindEl = document.createElement("span");
+    futureWindEl.textContent = Math.floor(daily.wind.speed) + " mph";
+    fiveDayEl.appendChild(futureWindEl);
+    
+        weatherContainerEl.appendChild(fiveDayEl);
+    }
+    //var testEl = document.createElement("div");
+    //testEl.classList = "card"
+     
+    //var currentTemp = document.createElement("span")
+    //currentTemp.textContent = "Temp = " + Math.floor(weather.main.temp) + "°";
+    //testEl.appendChild(currentTemp);
+
+    //weatherContainerEl.appendChild(testEl);
   }
+  
+  //var displayForecast = function (weather, cityName) {
+      //weatherContainerEl.textContent = ""
+  
+      //var forecast = weather.list
+      //for (i=5; i < forecast.length; i=i+8) {
+        //  var dailyForecast = forecast[i];
+      //}
+  
+      //var sevenDayEl = document.createElement("div");
+      //sevenDayEl.classList = "card forecast-box";
+  
+      //var futureDate = document.createElement ("div");
+      //futureDate.textContent = moment.unix(dailyForecast.dt).format(M/D);
+      //sevenDayEl.appendChild(futureDate);
+  
+      //var futureTempEl = document.createElement ("div");
+      //futureTempEl.textContent = Math.floor(daily.main.temp) + "°";
+      //sevenDayEl.appendChild(futureTempEl);
+  
+      //weatherContainerEl.appendChild(sevenDayEl);
+  
+  
+  
+  
+  
+  //}
 
 function clearSaved() {
     localStorage.clear();
 }
 
-//searchButton.addEventListener("click", sevenDayForecast);
+searchButton.addEventListener("click", sevenDayForecast);
