@@ -17,7 +17,7 @@ Events Tonight is a one-stop event planner for those who like to get out, travel
 
 ####
 Screenshot:
-![screenshot](https://user-images.githubusercontent.com/88121961/134593472-c14cbaf3-3134-4068-ac39-654b9900bbc0.PNG)
+![screenshot](https://user-images.githubusercontent.com/88121961/134596342-99322a8c-77d4-4cb7-bf7f-a0820fda2c60.PNG)
 
 #####
 Link:
