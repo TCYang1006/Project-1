@@ -22,7 +22,7 @@
   }
 /* navigation styles */
 .nav-wrapper {
-    background-color: var(--primarycolor);
+    background-image: linear-gradient(180deg, #002d4c, #00416D)
 }
 
 .brand-logo {
@@ -48,7 +48,7 @@
 }
 
 .weather-title {
-  background-color: var(--secondarycolor);
+  background-image: linear-gradient(to top, #FFFFFF, var(--secondarycolor));
   color: var(--primarycolor);
 }
 
