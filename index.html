@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- style for map <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.7.0/css/ol.css" type="text/css"> -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
     <link rel="stylesheet" href="./Assets/style.css" />
@@ -101,24 +99,7 @@
                           </div>
                         </div>
                       </div>
-                    
-
-<!--                     <div class="center-align">
-                        <div class="preloader-wrapper small active">
-                            <div class="spinner-layer spinner-black-only">
-                                <div class="circle-clipper left">
-                                    <div class="circle"></div>
-                                </div>
-                                <div class="gap-patch">
-                                    <div class="circle"></div>
-                                </div>
-                                <div class="circle-clipper right">
-                                    <div class="circle"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-                    <!--Preloader Content End-->
+                
                     <div class="card-action center-align">
                         <a class="waves-effect waves-light btn-small btn z-depth-2">Tickets
                             <i class="material-icons right">turned_in_not</i>
@@ -131,6 +112,7 @@
                 </div>
                 <!--Previous Searches Card-->
             </div>
+            <!-- Right Side/Location of Venue Map Content -->
             <div class="col s12 m12 l5">
                 <div class="col s12 card large hoverable" id="location">
                     <div id="map" class="map">
@@ -140,23 +122,24 @@
                         <div class="divider"></div>
                     </div>
                 </div>
-                <!--Left Side/Results Section of Main Content End-->
             </div>
             <!--Left Side/Results Section of Main Content End-->
-            <!--Right Side/Map and Weather of Main Content Begin-->
 
-            <!-- Location of Venue Map Content -->
-
+            <!--Weather of Main Content Begin-->
             <div class="row">
-                <!--Weather Content-->
                 <div class="col s12 center-align card small hoverable" id="weather">
-                    <div class="card-title section">
+                    <div class="card-title container section">
                         <i class="material-icons">wb_sunny</i>
                         Weather
                     </div>
                     <div class="divider"></div>
+                    <div class="row">
+                        <div class="col s1 m1 l1"></div>
+                        <div id="weather-container"></div>
+                        <div class="col s1 m1 l1"></div>
+                    </div>
                 </div>
-                <!--Right Side/Map and Weather of Main Content End-->
+                <!--Weather of Main Content End-->
             </div>
         </div>
     </div>

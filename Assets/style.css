@@ -45,7 +45,15 @@
   /* card styles */
   .card-title {
     color: var(--primarycolor);
-    text-decoration: underline;
+}
+
+.weather-title {
+  background-color: var(--secondarycolor);
+  color: var(--primarycolor);
+}
+
+.weather-card {
+  color: var(--primarycolor);
 }
 
 /* previous search section styles */
