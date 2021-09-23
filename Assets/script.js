@@ -1,31 +1,21 @@
 var myApiKey = 	"kHDMctExxPE8FJUNZrAuZBPqgpONcvnq"
 var searchButton = document.getElementById('searchBtn')
-var searchedCities = [];
+var clearButton = document.getElementById('clear')
+var cities = [];
 var cityList =$("#city-list");
 var startDate = moment().format();
 var daysAdd = 6;
 var endDate = moment().add(6, 'd').format();
 var weatherContainerEl = document.querySelector("#weather-container");
-/* function eventSearch() {
-    var search = document.getElementById('search').value;
-    fetch (
-    'https://app.ticketmaster.com/discovery/v2/events?' + 'apikey=' + myApiKey + '&radius=50&locale=*&city=' + search + '&includeSpellcheck=yes'
-    )
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(response) {
-        console.log(response);
-    });
-}
- */
+var li = document.getElementById('city-list')
+
 
 function getEvents(search) {
     var search = document.getElementById('search').value;
     $('#events-panel').show();
   
     if (search < 0) {
-      search = 0;
+      search = 3;
       return;
     }
     if (search > 0) {
@@ -77,29 +67,29 @@ function getEvents(search) {
     }
   }
 
-/* init();
+  init();
+
 function init(){
-    var storedCities = JSON.parse(localStorage.getItem("searchedCities"));
+    var storedCities = JSON.parse(localStorage.getItem("cities"));
 
     if (storedCities !== null) {
         cities = storedCities;
-    }
-    getEvents();
-}
- */
-function storeCities(){
-    localStorage.setItem("searchedCities", JSON.stringify(cities));
-    console.log(localStorage);
+      }
+    renderCities();
 }
 
+function storeCities(){
+  localStorage.setItem("cities", JSON.stringify(cities));
+  console.log(localStorage);
+}
 function renderCities() {
     cityList.empty();
     
     for (var i = 0; i < cities.length; i++) {
-      var city = searchedCities[i];
+      var city = cities[i];
       
       var li = $("<li>").text(city);
-      li.attr("id","listC");
+      li.attr("id","list");
       li.attr("data-city", city);
       li.attr("class", "list-group-item");
       console.log(li);
@@ -109,11 +99,20 @@ function renderCities() {
         return
     } 
     else{
-        eventSearch(city)
-        sevenDayForecast(cityName)
-    };
-}
+      getEvents(city);
+  };
+}   
 
+  $("#searchBtn").on("click", function(event){
+      event.preventDefault();
+    var city = $("#search").val().trim();
+    if (city === "") {
+        return;
+    }
+    cities.push(city);
+  storeCities();
+  renderCities();
+  });
 
 // forecast and weather function //
 
@@ -171,8 +170,18 @@ var sevenDayForecast = function(cityName) {
     }
   }
 
-function clearSaved() {
-    localStorage.clear();
-}
 
 searchButton.addEventListener("click", sevenDayForecast);
+
+// Clearing Previous Searches
+function clearStorage() {
+  localStorage.clear('cities');
+  location.reload();
+}
+clearButton.addEventListener("click", clearStorage);
+
+
+$(document).on("click", "#list", function() {
+  var thisCity = $(this).attr("data-city");
+  getEvents(thisCity);
+});
