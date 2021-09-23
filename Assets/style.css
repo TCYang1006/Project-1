@@ -22,7 +22,7 @@
   }
 /* navigation styles */
 .nav-wrapper {
-    background-color: var(--primarycolor);
+    background-image: linear-gradient(180deg, #002d4c, #00416D)
 }
 
 .brand-logo {
@@ -45,7 +45,15 @@
   /* card styles */
   .card-title {
     color: var(--primarycolor);
-    text-decoration: underline;
+}
+
+.weather-title {
+  background-image: linear-gradient(to top, #FFFFFF, var(--secondarycolor));
+  color: var(--primarycolor);
+}
+
+.weather-card {
+  color: var(--primarycolor);
 }
 
 /* previous search section styles */
@@ -59,7 +67,6 @@
   height: 400px;
   padding: 1rem
 }
-
 
 
 #map2 { position: absolute; top: 5px; bottom: 5px; left: .5;width: 95%; }
@@ -78,3 +85,11 @@
         color: black;
         background: rgba(233, 160, 26, 0.37);
     }
+
+#list {
+  color: var(--primarycolor);
+  font-weight: bold;
+  list-style-type: circle;
+  padding-left: 10%;
+}
+

@@ -1,5 +1,6 @@
 var myApiKey = "kHDMctExxPE8FJUNZrAuZBPqgpONcvnq"
 var searchButton = document.getElementById('searchBtn')
+
 var searchedCities = [];
 var cityList = $("#city-list");
 var startDate = moment().format();
@@ -36,8 +37,10 @@ function getEvents(search) {
   if (search > 0) {
     if (search > getEvents.json.search) {
       search = 0;
+
     }
   }
+
 
   fetch("https://api.openweathermap.org/data/2.5/weather?q=" + search + "&units=" + units + "&appid=" + TCYang100622ApiKey)
     .then(function (response) {
@@ -129,6 +132,7 @@ function showEvents(json) {
     item.off("click");
     item.click(events[i], function (eventObject) {
       console.log(eventObject.data);
+
       try {
         getAttraction(eventObject.data._embedded.attractions[0].id);
       } catch (err) {
@@ -139,41 +143,125 @@ function showEvents(json) {
   }
 }
 
-/* init();
+  init();
+
 function init(){
-    var storedCities = JSON.parse(localStorage.getItem("searchedCities"));
+    var storedCities = JSON.parse(localStorage.getItem("cities"));
 
     if (storedCities !== null) {
         cities = storedCities;
-    }
-    getEvents();
+      }
+    renderCities();
 }
- */
-function storeCities() {
-  localStorage.setItem("searchedCities", JSON.stringify(cities));
+
+
+function storeCities(){
+  localStorage.setItem("cities", JSON.stringify(cities));
+
   console.log(localStorage);
 }
-
 function renderCities() {
-  cityList.empty();
 
-  for (var i = 0; i < cities.length; i++) {
-    var city = searchedCities[i];
-
-    var li = $("<li>").text(city);
-    li.attr("id", "listC");
-    li.attr("data-city", city);
-    li.attr("class", "list-group-item");
-    console.log(li);
-    cityList.prepend(li);
-  }
-  if (!city) {
-    return
-  }
-  else {
-    eventSearch(city)
+    cityList.empty();
+    
+    for (var i = 0; i < cities.length; i++) {
+      var city = cities[i];
+      
+      var li = $("<li>").text(city);
+      li.attr("id","list");
+      li.attr("data-city", city);
+      li.attr("class", "list-group-item");
+      console.log(li);
+      cityList.prepend(li);
+    }
+    if (!city){
+        return
+    } 
+    else{
+      getEvents(city);
   };
+}   
+
+  $("#searchBtn").on("click", function(event){
+      event.preventDefault();
+    var city = $("#search").val().trim();
+    if (city === "") {
+        return;
+    }
+    cities.push(city);
+  storeCities();
+  renderCities();
+  });
+
+// forecast and weather function //
+
+var sevenDayForecast = function(cityName) {
+  var cityName = document.getElementById('search').value.trim()
+  var apiKey = "4aa8b0f77c886819d2b920f429db711e"
+  var apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=imperial&appid=4aa8b0f77c886819d2b920f429db711e`;
+  
+  fetch(apiUrl)
+  .then(function(response) {
+      if(response.ok) {
+          response.json().then(function(data) {
+              console.log(data, cityName)
+             displayForecast (data, cityName)
+          });
+      }
+  });
+  }
+
+  var displayForecast = function(weather) {
+    weatherContainerEl.textContent = ""
+
+    var forecast = weather.list;
+    for(var i=5; i < forecast.length; i=i+8) {
+        var daily = forecast[i];
+
+    var fiveDayEl = document.createElement("div");
+    fiveDayEl.classList = "card weather-card hoverable col s12 m2 l2";
+
+    var futureDate = document.createElement("div");
+    futureDate.textContent = moment.unix(daily.dt).format("M/D");
+    futureDate.classList = "card-title weather-title text-center z-depth-2";
+    fiveDayEl.appendChild(futureDate);
+    
+    var futureIcon = document.createElement("img");
+    futureIcon.setAttribute ("src", `https://openweathermap.org/img/wn/${daily.weather[0].icon}.png`);
+    fiveDayEl.appendChild(futureIcon);
+
+    var futureTemp = document.createElement("span");
+    futureTemp.textContent = "Temp:" + Math.floor(daily.main.temp) + "°";
+    futureTemp.classList = "col s12 center-align";
+    fiveDayEl.appendChild(futureTemp);
+
+    var futureHumidity = document.createElement("span");
+    futureHumidity.textContent = "Humidity:" + (daily.main.humidity) + "%";
+    futureHumidity.classList = "col s12 center-align";
+    fiveDayEl.appendChild(futureHumidity);
+
+    var futureWind = document.createElement("span");
+    futureWind.textContent = "Wind:" + Math.floor(daily.wind.speed) + " mph";
+    futureWind.classList = "col s12 center-align";
+    fiveDayEl.appendChild(futureWind);
+    
+        weatherContainerEl.appendChild(fiveDayEl);
+    }
+  }
+
+
+searchButton.addEventListener("click", sevenDayForecast);
+
+// Clearing Previous Searches
+function clearStorage() {
+  localStorage.clear('cities');
+  location.reload();
 }
-function clearSaved() {
-  localStorage.clear();
-}
+clearButton.addEventListener("click", clearStorage);
+
+
+$(document).on("click", "#list", function() {
+  var thisCity = $(this).attr("data-city");
+  getEvents(thisCity);
+});
+
