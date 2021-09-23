@@ -5,8 +5,7 @@ var cityList =$("#city-list");
 var startDate = moment().format();
 var daysAdd = 6;
 var endDate = moment().add(6, 'd').format();
-var weatherContainerEl = document.querySelector("#weather");
-var cityInputEl = document.querySelector("#search");
+var weatherContainerEl = document.querySelector("#weather-container");
 /* function eventSearch() {
     var search = document.getElementById('search').value;
     fetch (
@@ -115,12 +114,11 @@ function renderCities() {
     };
 }
 
-//var formSubmit = function(event) {
-  //event.preventDefault();
-  //var cityName = document.getElementById('search').value;
+
+// forecast and weather function //
 
 var sevenDayForecast = function(cityName) {
-  var cityName = cityInputEl.value.trim();
+  var cityName = document.getElementById('search').value.trim()
   var apiKey = "4aa8b0f77c886819d2b920f429db711e"
   var apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=imperial&appid=4aa8b0f77c886819d2b920f429db711e`;
   
@@ -129,14 +127,13 @@ var sevenDayForecast = function(cityName) {
       if(response.ok) {
           response.json().then(function(data) {
               console.log(data, cityName)
-             // displayForecast(data, cityName);
-             testForecast (data, cityName)
+             displayForecast (data, cityName)
           });
       }
   });
   }
 
-  var testForecast = function(weather) {
+  var displayForecast = function(weather) {
     weatherContainerEl.textContent = ""
 
     var forecast = weather.list;
@@ -144,64 +141,35 @@ var sevenDayForecast = function(cityName) {
         var daily = forecast[i];
 
     var fiveDayEl = document.createElement("div");
-    fiveDayEl.classList = "card five-day col-2";
+    fiveDayEl.classList = "card weather-card hoverable col s12 m2 l2";
 
     var futureDate = document.createElement("div");
     futureDate.textContent = moment.unix(daily.dt).format("M/D");
-    futureDate.classList = "card-header text-center dashboard";
+    futureDate.classList = "card-title weather-title text-center z-depth-2";
     fiveDayEl.appendChild(futureDate);
     
+    var futureIcon = document.createElement("img");
+    futureIcon.setAttribute ("src", `https://openweathermap.org/img/wn/${daily.weather[0].icon}.png`);
+    fiveDayEl.appendChild(futureIcon);
 
-    var futureTempEl = document.createElement("span");
-    futureTempEl.textContent = Math.floor(daily.main.temp) + "°";
-    fiveDayEl.appendChild(futureTempEl);
+    var futureTemp = document.createElement("span");
+    futureTemp.textContent = "Temp:" + Math.floor(daily.main.temp) + "°";
+    futureTemp.classList = "col s12 center-align";
+    fiveDayEl.appendChild(futureTemp);
 
-    var futureHumidityEl = document.createElement("span");
-    futureHumidityEl.textContent = daily.main.humidity + "%";
-    fiveDayEl.appendChild(futureHumidityEl);
+    var futureHumidity = document.createElement("span");
+    futureHumidity.textContent = "Humidity:" + (daily.main.humidity) + "%";
+    futureHumidity.classList = "col s12 center-align";
+    fiveDayEl.appendChild(futureHumidity);
 
-    var futureWindEl = document.createElement("span");
-    futureWindEl.textContent = Math.floor(daily.wind.speed) + " mph";
-    fiveDayEl.appendChild(futureWindEl);
+    var futureWind = document.createElement("span");
+    futureWind.textContent = "Wind:" + Math.floor(daily.wind.speed) + " mph";
+    futureWind.classList = "col s12 center-align";
+    fiveDayEl.appendChild(futureWind);
     
         weatherContainerEl.appendChild(fiveDayEl);
     }
-    //var testEl = document.createElement("div");
-    //testEl.classList = "card"
-     
-    //var currentTemp = document.createElement("span")
-    //currentTemp.textContent = "Temp = " + Math.floor(weather.main.temp) + "°";
-    //testEl.appendChild(currentTemp);
-
-    //weatherContainerEl.appendChild(testEl);
   }
-  
-  //var displayForecast = function (weather, cityName) {
-      //weatherContainerEl.textContent = ""
-  
-      //var forecast = weather.list
-      //for (i=5; i < forecast.length; i=i+8) {
-        //  var dailyForecast = forecast[i];
-      //}
-  
-      //var sevenDayEl = document.createElement("div");
-      //sevenDayEl.classList = "card forecast-box";
-  
-      //var futureDate = document.createElement ("div");
-      //futureDate.textContent = moment.unix(dailyForecast.dt).format(M/D);
-      //sevenDayEl.appendChild(futureDate);
-  
-      //var futureTempEl = document.createElement ("div");
-      //futureTempEl.textContent = Math.floor(daily.main.temp) + "°";
-      //sevenDayEl.appendChild(futureTempEl);
-  
-      //weatherContainerEl.appendChild(sevenDayEl);
-  
-  
-  
-  
-  
-  //}
 
 function clearSaved() {
     localStorage.clear();
