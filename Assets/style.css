@@ -68,3 +68,9 @@
   padding: 1rem
 }
 
+#list {
+  color: var(--primarycolor);
+  font-weight: bold;
+  list-style-type: circle;
+  padding-left: 10%;
+}
