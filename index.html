@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet">
     <link rel="stylesheet" href="./Assets/style.css" />
     <title>Project-1</title>
 </head>
@@ -28,7 +29,24 @@
                     </ul>
                 </div>
             </nav>
-    
+
+            <ul class="sidenav" id="mobile">
+                <div>
+                    <li><a class="waves-effect" href="#search">Search</a></li>
+                    <li>
+                        <div class="divider"></div>
+                    </li>
+                    <li><a class="waves-effect" href="#results">Results</a></li>
+                    <li>
+                        <div class="divider"></div>
+                    </li>
+                    <li><a class="waves-effect" href="#location">Location</a></li>
+                    <li>
+                        <div class="divider"></div>
+                    </li>
+                    <li><a class="waves-effect" href="#weather">Weather</a></li>
+                </div>
+            </ul>
         </div>
     </header>
     <!--End Header and Navigation Bar -->
@@ -42,7 +60,8 @@
                     <input placeholder="Enter a City" id="search" type="text" />
                 </div>
                 <div class="col s12 m4 l4">
-                    <a id="searchBtn" onclick="getEvents()" class="waves-effect waves-light btn-small col s12 m6 l6 btn z-depth-2">Search
+                    <a id="searchBtn" onclick="getEvents()"
+                        class="waves-effect waves-light btn-small col s12 m6 l6 btn z-depth-2">Search
                         <i class="material-icons right">search</i>
                     </a>
                     <a onclick="clearStorage()" id="clear" class="waves-effect waves-light btn-small col s6 btn z-depth-2 hide-on-small-only">Clear Saved
@@ -145,6 +164,9 @@
                     <div id="map" class="map">
                         <div class="card-title section right-align">Location
                             <i class="material-icons">location_city</i>
+                            <div id="map2"></div>
+                            <br>
+                            <button id="fly">Click to Zoom In on Searched City</button>
                         </div>
                         <div class="divider"></div>
                     </div>
@@ -173,8 +195,10 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
     <script src="./Assets/script.js"></script>
 </body>
 

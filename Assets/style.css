@@ -1,12 +1,12 @@
-/*
+
 .map {
-    height: 350px;
+    height: 550px;
     width: 100%;
-  } */
+  } 
 
   * {
     margin: 0;
-    padding: 0;
+    padding: 0px;
     box-sizing: border-box;
 }
 
@@ -68,6 +68,23 @@
   padding: 1rem
 }
 
+
+#map2 { position: absolute; top: 5px; bottom: 5px; left: .5;width: 95%; }
+
+    #fly {
+        display: block;
+        position: relative;
+        margin:0px auto;
+        width: 50%;
+        height: 40px;
+        padding: 10px;
+        border: none;
+        border-radius: 3px;
+        font-size: 12px;
+        text-align: center;
+        color: black;
+        background: rgba(233, 160, 26, 0.37);
+    }
 #list {
   color: var(--primarycolor);
   font-weight: bold;
