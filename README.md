@@ -1,5 +1,5 @@
-# Events Tonight
-Events Tonight is a one-stop event planner for those who like to get out, travel and have some fun. Users can search by city and a list of events will display, along with the current weather forecast and a map of the location.
+# This Week's Distractions
+This Week's Distractions is a one-stop event planner for those who like to get out, travel and have some fun. Users can search by city and a list of events will display, along with the current weather forecast and a map of the location.
 
 ## Contents
 - index.html
@@ -17,7 +17,8 @@ Events Tonight is a one-stop event planner for those who like to get out, travel
 
 ####
 Screenshot:
-![screenshot](https://user-images.githubusercontent.com/88121961/134596342-99322a8c-77d4-4cb7-bf7f-a0820fda2c60.PNG)
+
+![screenshot](https://user-images.githubusercontent.com/88121961/134835840-aa6d44f5-dcc2-4555-a78b-48bfdf5faf35.PNG)
 
 #####
 Link:
